@@ -291,12 +291,7 @@ start:
         }
 
         break;
-    // case 4:
-    // entry();
-    // break;
-    // case 5:
-    // entry();
-    // break;
+    
     case 6:
         printf("\n\nExiting The Program.\n\nGood Bye!\n\n");
         return 0;
@@ -305,3 +300,4 @@ start:
 
     return 0;
 }
+
