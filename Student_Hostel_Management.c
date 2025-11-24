@@ -1,7 +1,8 @@
-#include <stdio.h> //char for phone number instead of int
+#include <stdio.h>
 #include <string.h>
+
 int choice;
-struct entry
+struct entry // structure For Entry
 {
     char name[50];
     int room;
@@ -10,25 +11,23 @@ struct entry
     char purpose[60];
 };
 
-struct complaint
+struct complaint // Structure for Complaint
 {
     char name[50];
     int room;
     int phone;
     char complaint[200];
 };
-// }
 
-struct entry en[100];
-struct complaint com[100];
-void entry(int a)
+struct entry en[100];      // Structured Array for multiple Entries
+struct complaint com[100]; // Structured Array For Multiple Complaints
+void entry(int a)          // Function For Getting Entry
 {
 
     printf("\n\n----Entry:---\n\n");
     printf("Name:\n");
     fgets(en[a].name, sizeof(en[a].name), stdin);
     en[a].name[strcspn(en[a].name, "\n")] = '\0'; // For UI From CHatGpt
-    // scanf("%s", &en[a].name);
 
     printf("Room No. \n");
     scanf("%d", &en[a].room);
@@ -42,7 +41,7 @@ void entry(int a)
 
     printf("\n\n-----Entry Done----\n\n");
 }
-void display_entry(int i)
+void display_entry(int i) // Function For Displaying Entry If Someone Want to Make Changes
 {
 
     printf("\n\n----Your Entry:---\n\n");
@@ -55,7 +54,7 @@ void display_entry(int i)
 
     printf("Purpose: %s\n\n\n", en[i].purpose);
 }
-void Complaint(int x)
+void Complaint(int x) // Function For Taking Complaints
 {
 
     printf("\n\n\nEnter Your Department Of Complaint:-\n\n");
@@ -64,7 +63,7 @@ void Complaint(int x)
     printf("3.Security\n");
     printf("4.Mess/Food\n");
     scanf("%d", &choice);
-    switch (choice)
+    switch (choice) // Switch Case For Different Departments
     {
     case 1:
         for (int i = 0; i < 100; i++)
@@ -148,7 +147,7 @@ void Complaint(int x)
         break;
     }
 }
-int display_com(int v)
+int display_com(int v) // Display Complaint In-Case Anyone Want To Make Changes
 {
     // int num;
     // printf("Enter Your Room No.:-\n");
@@ -199,13 +198,13 @@ int main()
 
     int arr[100];
 start:
-    printf("Enter You Choice: \n");
+    printf("\n====Enter You Choice====\n\n");
     printf("1. Fill out time\n");
     printf("2. In time\n");
-    printf("3. Fill a complaint (plumber electrician food etc.)\n");
+    printf("3. Fill a complaint (Plumber,Electrician,Food etc.)\n");
     // printf("4. nihgt out pass\n");
     // printf("5. Day out pass\n");
-    printf("6. To Exit\n");
+    printf("4. To Exit\n\n");
     scanf("%d", &n);
     getchar();
 
@@ -258,6 +257,7 @@ start:
                     display_entry(j);
                     printf("Enter Your In-Time: ");
                     fgets(en[j].in_time, sizeof(en[j].in_time), stdin);
+                    printf("\n\n---Your Entry is Registered---\n\n");
                     goto start;
                     break;
                 }
@@ -291,8 +291,8 @@ start:
         }
 
         break;
-    
-    case 6:
+
+    case 4:
         printf("\n\nExiting The Program.\n\nGood Bye!\n\n");
         return 0;
         break;
@@ -300,4 +300,3 @@ start:
 
     return 0;
 }
-
